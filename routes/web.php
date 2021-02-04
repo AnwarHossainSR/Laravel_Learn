@@ -6,6 +6,7 @@ use App\Http\Controllers\PersonController;
 use App\Http\Controllers\UserAuthController;
 use App\Http\Controllers\storeUserController;
 use App\Http\Controllers\UploadController;
+use App\Http\Controllers\MemberController;
 
 /*
 |--------------------------------------------------------------------------
@@ -45,7 +46,10 @@ Route::post('storeUserData',[storeUserController::class,'addMember']);
 Route::view('upload', 'upload');
 Route::post('upload',[UploadController::class,'uploadFile']);
 Route::view('localization', 'localization');
-Route::get('/localization/{lang}', function ($lang) {
-    App::setlocale($lang);
-    return view('localization');
-});
+//Route::get('/localization/{lang}', function ($lang) {
+//    App::setlocale($lang);
+//    return view('localization');
+//});
+
+Route::view('add', 'addMember');
+Route::post('add',[MemberController::class,'addData']);
