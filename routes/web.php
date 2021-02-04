@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\PersonController;
+use App\Http\Controllers\UserAuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,3 +23,17 @@ Route::get('users',[UserController::class,'index']);
 
 Route::get('userdata',[UserController::class,'getData']);
 
+Route::view('login', 'person');
+Route::post('personApi',[PersonController::class,'ApiRequestExample']);
+
+Route::view('userlogin', 'login');
+Route::view('profile', 'profile');
+
+Route::post('user',[UserAuthController::class,'SessionExample']);
+Route::get('/logout', function () {
+    if(session()->has('username'))
+    {
+        session()->pull('username',null);
+    }
+    return view('login');
+});
