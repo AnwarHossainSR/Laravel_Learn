@@ -5,6 +5,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\PersonController;
 use App\Http\Controllers\UserAuthController;
 use App\Http\Controllers\storeUserController;
+use App\Http\Controllers\UploadController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,3 +42,7 @@ Route::get('/logout', function () {
 
 Route::view('storeuser', 'storeUsers');
 Route::post('storeUserData',[storeUserController::class,'addMember']);
+Route::view('upload', 'upload');
+Route::post('upload',[UploadController::class,'uploadFile']);
+
+
