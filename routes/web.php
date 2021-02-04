@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PersonController;
 use App\Http\Controllers\UserAuthController;
+use App\Http\Controllers\storeUserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,5 +36,8 @@ Route::get('/logout', function () {
     {
         session()->pull('username',null);
     }
-    return view('login');
+    return redirect('login');
 });
+
+Route::view('storeuser', 'storeUsers');
+Route::post('storeUserData',[storeUserController::class,'addMember']);
