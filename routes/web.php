@@ -44,5 +44,8 @@ Route::view('storeuser', 'storeUsers');
 Route::post('storeUserData',[storeUserController::class,'addMember']);
 Route::view('upload', 'upload');
 Route::post('upload',[UploadController::class,'uploadFile']);
-
-
+Route::view('localization', 'localization');
+Route::get('/localization/{lang}', function ($lang) {
+    App::setlocale($lang);
+    return view('localization');
+});
