@@ -17,6 +17,8 @@ class UserController extends Controller
     //Fetch data with model
     function getData()
     {
-        return User::all();
+        //return User::all();
+        $data = User::all();
+        return view('showData',['users'=>$data]);
     }
 }

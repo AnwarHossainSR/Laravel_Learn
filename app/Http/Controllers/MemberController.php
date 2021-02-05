@@ -14,5 +14,28 @@ class MemberController extends Controller
         $member->email = $req->email;
         $member->address = $req->address;
         $member->save();
+        return redirect('userdata');
+    }
+
+    function delete($id)
+    {
+        $data=User::find($id);
+        $data->delete();
+        return redirect('userdata');
+    }
+
+    function showData($id)
+    {
+       $data = User::find($id); 
+       return view('edit',['data'=>$data]);
+    }
+    function update(Request $req)
+    {
+       $data = User::find($req->id); 
+       $data->name = $req->name;
+       $data->email = $req->email;
+       $data->address = $req->address;
+       $data->save();
+       return redirect('userdata');
     }
 }
